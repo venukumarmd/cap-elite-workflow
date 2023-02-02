@@ -1,0 +1,44 @@
+/* 
+    
+    class Node 
+    	int data;
+    	Node left;
+    	Node right;
+	*/
+
+    static class pair{
+        int hd;
+        Node node;
+        pair(int hd , Node node){
+            this.hd = hd;
+            this.node = node;
+        }
+    }
+
+	public static void topView(Node root) {
+        TreeMap<Integer , Integer> map = new TreeMap<>();
+        pair p = new pair(0 , root);
+        Queue<pair> queue = new LinkedList<>();
+        queue.add(p);
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            for(int i = 0 ;i < size ;i++){
+                pair pr = queue.poll();
+                
+                if(!map.containsKey(pr.hd)){
+                    map.put(pr.hd , pr.node.data);
+                }
+                
+                if(pr.node.left != null){
+                    queue.add(new pair(pr.hd -1 , pr.node.left));
+                }
+                if(pr.node.right != null){
+                    queue.add(new pair(pr.hd+1 , pr.node.right));
+                }
+            }
+        }
+        for(Map.Entry<Integer , Integer> l  : map.entrySet()){
+            System.out.print(l.getValue() + " ");
+        }
+      
+    }
