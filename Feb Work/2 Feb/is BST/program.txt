@@ -1,0 +1,78 @@
+
+PREPARENEW
+CERTIFY
+COMPETE
+Search
+ 20pa1a04a6 
+All Contests  treesrevision  Is This a Binary Search Tree?
+Is This a Binary Search Tree?
+Problem
+Submissions
+Leaderboard
+Discussions
+Submitted 4 hours ago • Score: 30.00Status: Accepted
+ Test Case #0
+ Test Case #1
+ Test Case #2
+ Test Case #3
+ Test Case #4
+ Test Case #5
+ Test Case #6
+ Test Case #7
+ Test Case #8
+ Test Case #9
+ Test Case #10
+ Test Case #11
+ Test Case #12
+ Test Case #13
+
+Submitted Code
+Language: Java 7
+
+ Open in editor
+25
+/* Hidden stub code will pass a root argument to the function below. Complete the function to solve the challenge. Hint: you may want to write one or more helper functions.  
+26
+​
+27
+The Node class is defined as follows:
+28
+    class Node {
+29
+        int data;
+30
+        Node left;
+31
+        Node right;
+32
+     }
+33
+*/
+34
+    boolean check(Node root , int min , int max){
+35
+        if(root == null )   return true;
+36
+        if(root.data >= max || root.data <= min){
+37
+            return false;
+38
+        }
+39
+        boolean left = check(root.left , min , root.data);
+40
+        boolean right = check(root.right , root.data , max);
+41
+        if(left == true && right == true)   return true;
+42
+        return false;
+43
+    }
+44
+    boolean checkBST(Node root) {
+45
+        return check(root , Integer.MIN_VALUE , Integer.MAX_VALUE);
+46
+    }
+Interview Prep | Blog | Scoring | Environment | FAQ | About Us | Support | Careers | Terms Of Service | Privacy Policy |
+
